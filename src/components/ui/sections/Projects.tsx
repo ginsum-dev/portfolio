@@ -1,7 +1,6 @@
 "use client";
 
-import { animate } from "motion";
-import { useEffect, useRef } from "react";
+import { motion } from "motion/react";
 
 interface Project {
   id: number;
@@ -57,78 +56,37 @@ const projects: Project[] = [
 ];
 
 export default function Projects() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const hasAnimatedRef = useRef(false);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimatedRef.current) {
-            hasAnimatedRef.current = true;
-
-            // Animate the section title
-            const title = containerRef.current?.querySelector("h2");
-            if (title) {
-              animate(
-                title,
-                { opacity: [0, 1], y: [30, 0] },
-                { duration: 0.8, easing: "ease-out" }
-              );
-            }
-
-            // Animate project cards
-            const projectCards =
-              containerRef.current?.querySelectorAll(".project-card");
-            projectCards?.forEach((card, index) => {
-              animate(
-                card,
-                { opacity: [0, 1], y: [50, 0] },
-                {
-                  duration: 0.8,
-                  delay: index * 0.2,
-                  easing: "ease-out",
-                }
-              );
-            });
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      }
-    );
-
-    observer.observe(containerRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
   return (
     <section id="projects" className="py-20 bg-gray-50">
-      <div
-        className="container mx-auto px-4 sm:px-6 lg:px-8"
-        ref={containerRef}
-      >
-        <div className="text-center mb-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             프로젝트
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             다양한 기술을 활용하여 개발한 프로젝트들을 소개합니다
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {projects.map((project) => (
-            <div
+          {projects.map((project, index) => (
+            <motion.div
               key={project.id}
               className="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.8,
+                delay: index * 0.2,
+                ease: "easeOut",
+              }}
             >
               <div className="p-8">
                 <div className="text-6xl mb-4 text-center">{project.image}</div>
@@ -165,11 +123,17 @@ export default function Projects() {
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <motion.div
+          className="text-center mt-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+        >
           <a
             href="https://github.com/yourusername"
             target="_blank"
@@ -189,7 +153,7 @@ export default function Projects() {
             </svg>
             GitHub에서 더 보기
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

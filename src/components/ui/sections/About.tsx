@@ -1,68 +1,18 @@
 "use client";
 
-import { animate, stagger } from "motion";
-import { useEffect, useRef } from "react";
+import { motion } from "motion/react";
 
 export default function About() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const hasAnimatedRef = useRef(false);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimatedRef.current) {
-            hasAnimatedRef.current = true;
-
-            // Animate the section title
-            const title = containerRef.current?.querySelector("h2");
-            if (title) {
-              animate(
-                title,
-                { opacity: [0, 1], y: [30, 0] },
-                { duration: 0.8, easing: "ease-out" }
-              );
-            }
-
-            // Animate content sections
-            const contentSections =
-              containerRef.current?.querySelectorAll(".content-section");
-            contentSections?.forEach((section, index) => {
-              animate(
-                section,
-                { opacity: [0, 1], y: [30, 0] },
-                {
-                  duration: 0.8,
-                  delay: index * 0.2,
-                  easing: "ease-out",
-                }
-              );
-            });
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      }
-    );
-
-    observer.observe(containerRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
   return (
     <section id="about" className="py-20 bg-white">
-      <div
-        className="container mx-auto px-4 sm:px-6 lg:px-8"
-        ref={containerRef}
-      >
-        <div className="text-center mb-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             About Me
           </h2>
@@ -70,11 +20,17 @@ export default function About() {
             프론트엔드 개발자로서 사용자 경험을 중시하며 창의적인 솔루션을
             만듭니다
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Personal Info */}
-          <div className="content-section">
+          <motion.div
+            className="content-section"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
             <h3 className="text-2xl font-bold text-gray-900 mb-6">개인 소개</h3>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
@@ -114,10 +70,16 @@ export default function About() {
                 ))}
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Experience & Education */}
-          <div className="content-section space-y-8">
+          <motion.div
+            className="content-section space-y-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          >
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-6">경력</h3>
               <div className="space-y-6">
@@ -185,7 +147,7 @@ export default function About() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

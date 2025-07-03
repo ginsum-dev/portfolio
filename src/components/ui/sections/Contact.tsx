@@ -1,65 +1,14 @@
 "use client";
 
-import { animate } from "motion";
-import { useEffect, useRef, useState } from "react";
+import { motion } from "motion/react";
+import { useState } from "react";
 
 export default function Contact() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const hasAnimatedRef = useRef(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimatedRef.current) {
-            hasAnimatedRef.current = true;
-
-            // Animate the section title
-            const title = containerRef.current?.querySelector("h2");
-            if (title) {
-              animate(
-                title,
-                { opacity: [0, 1], y: [30, 0] },
-                { duration: 0.8, easing: "ease-out" }
-              );
-            }
-
-            // Animate contact info
-            const contactInfo =
-              containerRef.current?.querySelectorAll(".contact-info");
-            contactInfo?.forEach((info, index) => {
-              animate(
-                info,
-                { opacity: [0, 1], x: [-30, 0] },
-                {
-                  duration: 0.8,
-                  delay: index * 0.1,
-                  easing: "ease-out",
-                }
-              );
-            });
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      }
-    );
-
-    observer.observe(containerRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,27 +27,41 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-20 bg-white">
-      <div
-        className="container mx-auto px-4 sm:px-6 lg:px-8"
-        ref={containerRef}
-      >
-        <div className="text-center mb-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             연락하기
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             프로젝트나 협업에 대해 이야기하고 싶으시다면 언제든 연락주세요
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
-          <div className="space-y-8">
+          <motion.div
+            className="space-y-8"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          >
             <h3 className="text-2xl font-bold text-gray-900 mb-6">
               연락처 정보
             </h3>
-
-            <div className="contact-info flex items-center space-x-4">
+            <motion.div
+              className="contact-info flex items-center space-x-4"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            >
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                 <svg
                   className="w-6 h-6 text-blue-600"
@@ -118,9 +81,14 @@ export default function Contact() {
                 <h4 className="font-semibold text-gray-900">이메일</h4>
                 <p className="text-gray-600">your.email@example.com</p>
               </div>
-            </div>
-
-            <div className="contact-info flex items-center space-x-4">
+            </motion.div>
+            <motion.div
+              className="contact-info flex items-center space-x-4"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            >
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                 <svg
                   className="w-6 h-6 text-green-600"
@@ -146,9 +114,14 @@ export default function Contact() {
                 <h4 className="font-semibold text-gray-900">위치</h4>
                 <p className="text-gray-600">서울, 대한민국</p>
               </div>
-            </div>
-
-            <div className="contact-info flex items-center space-x-4">
+            </motion.div>
+            <motion.div
+              className="contact-info flex items-center space-x-4"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+            >
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                 <svg
                   className="w-6 h-6 text-purple-600"
@@ -175,9 +148,14 @@ export default function Contact() {
                   github.com/yourusername
                 </a>
               </div>
-            </div>
-
-            <div className="contact-info flex items-center space-x-4">
+            </motion.div>
+            <motion.div
+              className="contact-info flex items-center space-x-4"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+            >
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                 <svg
                   className="w-6 h-6 text-blue-600"
@@ -198,11 +176,17 @@ export default function Contact() {
                   linkedin.com/in/yourusername
                 </a>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Contact Form */}
-          <div className="bg-gray-50 p-8 rounded-xl">
+          <motion.div
+            className="bg-gray-50 p-8 rounded-xl"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+          >
             <h3 className="text-2xl font-bold text-gray-900 mb-6">
               메시지 보내기
             </h3>
@@ -271,7 +255,7 @@ export default function Contact() {
                 메시지 보내기
               </button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
