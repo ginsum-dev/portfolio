@@ -17,8 +17,7 @@ export default function About() {
             About Me
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            프론트엔드 개발자로서 사용자 경험을 중시하며 창의적인 솔루션을
-            만듭니다
+            사용자 중심의 웹 개발로 완성도 높은 웹 서비스를 제공합니다.
           </p>
         </motion.div>
 
@@ -124,26 +123,6 @@ export default function About() {
                   <p className="text-gray-600 mt-2">
                     소프트웨어 공학, 데이터 구조, 알고리즘 등 전공 과정 이수
                   </p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">자격증</h3>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                  <span className="text-gray-700">AWS Certified Developer</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <span className="text-gray-700">Google Cloud Platform</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                  <span className="text-gray-700">
-                    React Developer Certification
-                  </span>
                 </div>
               </div>
             </div>

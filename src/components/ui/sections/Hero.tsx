@@ -27,9 +27,7 @@ export default function Hero() {
             viewport={{ once: true }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            안녕하세요!
-            <br />
-            프론트엔드 개발자입니다
+            WEB
           </motion.h1>
           <motion.p
             className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto"
@@ -38,8 +36,9 @@ export default function Hero() {
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
           >
-            사용자 경험을 중시하며, 현대적이고 반응형 웹 애플리케이션을 만드는
-            것을 좋아합니다. React, TypeScript, Next.js를 주로 사용합니다.
+            확장 가능하고 유지보수가 쉬운 웹 애플리케이션 개발
+            <br />
+            React, Next.js, TypeScript
           </motion.p>
           <motion.button
             onClick={scrollToAbout}
