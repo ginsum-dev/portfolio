@@ -11,12 +11,10 @@ interface Skill {
 
 const skills: Skill[] = [
   { name: "React", level: 90, color: "bg-blue-500", icon: "⚛️" },
-  { name: "TypeScript", level: 85, color: "bg-blue-600", icon: "📘" },
-  { name: "Next.js", level: 80, color: "bg-black", icon: "⚡" },
-  { name: "JavaScript", level: 95, color: "bg-yellow-400", icon: "🟨" },
-  { name: "HTML/CSS", level: 90, color: "bg-orange-500", icon: "🌐" },
+  { name: "TypeScript", level: 80, color: "bg-blue-600", icon: "📘" },
+  { name: "Next.js", level: 80, color: "bg-green-500", icon: "⚡" },
+  { name: "JavaScript", level: 80, color: "bg-yellow-400", icon: "🟨" },
   { name: "Tailwind CSS", level: 85, color: "bg-cyan-500", icon: "🎨" },
-  { name: "Node.js", level: 75, color: "bg-green-500", icon: "🟢" },
   { name: "Git", level: 80, color: "bg-orange-600", icon: "📝" },
 ];
 
@@ -60,9 +58,6 @@ export default function Skills() {
                     {skill.name}
                   </span>
                 </div>
-                <span className="text-sm font-medium text-gray-600">
-                  {skill.level}%
-                </span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-3">
                 <motion.div
