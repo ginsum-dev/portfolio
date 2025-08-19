@@ -42,7 +42,7 @@ const projects: Project[] = [
       "TanStack Query",
     ],
     githubUrl: "https://github.com/ginsum-dev/ecommerce-nextjs",
-    liveUrl: "https://ecommerce-nextjs-4d6y.vercel.app/",
+    liveUrl: "https://ecommerce-nextjs-xi-coral.vercel.app/",
   },
 ];
 
