@@ -33,9 +33,16 @@ const projects: Project[] = [
     title: "Fruit Cart",
     description:
       "상품 리스트와 장바구니 추가를 할 수 있는 웹 페이지. 상품 목록을 확인하고 장바구니에 해당 상품을 추가할 수 있습니다.",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    githubUrl: "https://github.com/ginsum-dev/fruit-cart",
-    liveUrl: "https://fruit-cart.vercel.app/",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Zustand",
+      "TanStack Query",
+    ],
+    githubUrl: "https://github.com/ginsum-dev/ecommerce-nextjs",
+    liveUrl: "https://ecommerce-nextjs-4d6y.vercel.app/",
   },
 ];
 
