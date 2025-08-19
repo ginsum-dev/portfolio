@@ -7,7 +7,6 @@ interface Project {
   title: string;
   description: string;
   technologies: string[];
-  image: string;
   githubUrl: string;
   liveUrl: string;
 }
@@ -15,43 +14,28 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Platform",
+    title: "Survey Builder",
     description:
-      "React와 Node.js를 사용한 풀스택 이커머스 플랫폼. 사용자 인증, 상품 관리, 결제 시스템을 포함합니다.",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-    image: "🛒",
-    githubUrl: "#",
-    liveUrl: "#",
+      "설문지를 작성하고 미리볼 수 있는 웹 페이지. 질문을 타입별로 추가할 수 있고, 작성된 설문지의 미리보기할 수 있습니다.",
+    technologies: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Redux-toolkit",
+      "Shadcn UI",
+      "React-dnd",
+    ],
+    githubUrl: "https://github.com/ginsum-dev/survey-builder-react",
+    liveUrl: "https://survey-builder-react.vercel.app/",
   },
   {
     id: 2,
-    title: "Task Management App",
+    title: "Fruit Cart",
     description:
-      "드래그 앤 드롭 기능이 있는 칸반 보드 스타일의 태스크 관리 애플리케이션.",
+      "상품 리스트와 장바구니 추가를 할 수 있는 웹 페이지. 상품 목록을 확인하고 장바구니에 해당 상품을 추가할 수 있습니다.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    image: "📋",
-    githubUrl: "#",
-    liveUrl: "#",
-  },
-  {
-    id: 3,
-    title: "Weather Dashboard",
-    description:
-      "실시간 날씨 정보를 제공하는 대시보드. 위치 기반 날씨 예보와 차트를 포함합니다.",
-    technologies: ["Next.js", "TypeScript", "Chart.js", "OpenWeather API"],
-    image: "🌤️",
-    githubUrl: "#",
-    liveUrl: "#",
-  },
-  {
-    id: 4,
-    title: "Portfolio Website",
-    description:
-      "반응형 디자인과 애니메이션이 포함된 개인 포트폴리오 웹사이트.",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    image: "💼",
-    githubUrl: "#",
-    liveUrl: "#",
+    githubUrl: "https://github.com/ginsum-dev/fruit-cart",
+    liveUrl: "https://fruit-cart.vercel.app/",
   },
 ];
 
@@ -66,11 +50,11 @@ export default function Projects() {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
             프로젝트
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            다양한 기술을 활용하여 개발한 프로젝트들을 소개합니다
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            사이드 프로젝트를 소개합니다
           </p>
         </motion.div>
 
@@ -89,7 +73,6 @@ export default function Projects() {
               }}
             >
               <div className="p-8">
-                <div className="text-6xl mb-4 text-center">{project.image}</div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   {project.title}
                 </h3>
@@ -101,23 +84,23 @@ export default function Projects() {
                   {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
+                      className="px-3 py-1 bg-blue-100 text-blue-500 rounded-full text-xs font-medium"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex gap-4">
+                <div className="flex gap-2 justify-end">
                   <a
                     href={project.githubUrl}
-                    className="flex-1 bg-gray-900 text-white py-2 px-4 rounded-lg text-center font-medium hover:bg-gray-800 transition-colors"
+                    className="flex items-center justify-center bg-gray-800 text-white py-2 px-4 text-sm rounded-lg font-medium hover:bg-gray-800 transition-colors"
                   >
                     GitHub
                   </a>
                   <a
                     href={project.liveUrl}
-                    className="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg text-center font-medium hover:bg-blue-700 transition-colors"
+                    className="flex items-center justify-center bg-blue-400 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
                   >
                     Live Demo
                   </a>
@@ -135,10 +118,10 @@ export default function Projects() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/ginsum-dev"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 bg-gray-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
+            className="inline-flex items-center px-6 py-3 bg-gray-900 text-white rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors"
           >
             <svg
               className="w-5 h-5 mr-2"

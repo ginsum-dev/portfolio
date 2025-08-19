@@ -20,7 +20,7 @@ const skills: Skill[] = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-20 bg-white">
+    <section id="skills" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-16"
@@ -32,9 +32,6 @@ export default function Skills() {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             기술 스택
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            다양한 기술을 활용하여 사용자 친화적인 웹 애플리케이션을 개발합니다
-          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
